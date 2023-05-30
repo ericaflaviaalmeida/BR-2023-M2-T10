@@ -7,7 +7,7 @@ JUMP_VEL = 8.5
 Y_POS_DUCK = 400
 
 class Dinosaur:
-    def __ini__(self):
+    def __init__(self):
         self.image = RUNNING[0]
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = X_POS 
