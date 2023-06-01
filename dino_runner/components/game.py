@@ -38,6 +38,9 @@ class Game:#aqui altera background
         # Game loop: events - update - draw
         self.playing = True
         self.obstacle_menager.reset_obstacles()
+        self.game_speed = 20
+        self.score = 0
+
         while self.playing:
             self.events()
             self.update()
