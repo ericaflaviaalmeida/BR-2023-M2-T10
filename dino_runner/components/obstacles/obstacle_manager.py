@@ -16,13 +16,25 @@ class ObstacleManager:
             if len(self.obstacles) == 0:
                 self.obstacles.append(self.image_obstacles[random.randint(0,1)])# aleatorio aparecer a imagem
         
+        
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)
             if game.player.dino_rect.colliderect(obstacle.rect):
-                pygame.time.delay(500)
-                game.playing = False
-                game.death_count +=1
-                break
+                if not game.player.has_power_up:
+                    pygame.time.delay(500)
+                    game.playing = False
+                    game.death_count += 1 
+                    DEATH_SOUND.play()
+                    break
+                else:   
+                      if game.player.type == HAMMER_TYPE:
+                          self.obstacles.remove(obstacle)  
+                      elif game.player.type == HEART_TYPE:
+                           game.player.has_power_up = 0  
+                           
+                             
+            
+                            
             
     def reset_obstacles(self):
         self.obstacles = []  
